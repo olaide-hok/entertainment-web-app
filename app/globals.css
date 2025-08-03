@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+
+:root {
+    --background: var(--clr-blue-950);
+    --foreground: var(--clr-white);
+
+    /* Colors */
+    --clr-white: hsl(0 100% 100%);
+    --clr-black: hsl(0 0% 0%);
+
+    --clr-blue-950: hsl(223 30% 9%);
+    --clr-blue-900: hsl(223 36% 14%);
+    --clr-blue-500: hsl(223 23% 46%);
+
+    --clr-red-500: hsl(0 97% 63%);
+
+    --gradient: linear-gradient(
+        to bottom,
+        var(--clr-black),
+        var(--clr-black, 0.75)
+    );
+
+    /* Typography */
+
+    --font-family: 'Outfit', sans-serif;
+    --ff-outfit: var(--font-family);
+
+    --fs-32: 2rem;
+    --fs-24: 1.5rem;
+    --fs-20: 1.25rem;
+    --fs-18: 1.125rem;
+    --fs-16: 1rem;
+    --fs-15: 0.9375rem;
+    --fs-14: 0.875rem;
+    --fs-13: 0.8125rem;
+    --fs-12: 0.75rem;
+    --fs-11: 0.6875rem;
+
+    --lh-125: 125%;
+
+    --ls-5: -0.0313rem;
+    --ls-3: -0.0187rem;
+
+    /* Spacing */
+    --space-100: 0.5rem;
+    --space-200: 1rem;
+    --space-300: 1.5rem;
+    --space-400: 2rem;
+    --space-500: 2.5rem;
+    --space-700: 3rem;
+    --space-900: 4rem;
+    --space-1000: 5rem;
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--ff-outfit);
+}
