@@ -3,15 +3,16 @@
 import Image from 'next/image';
 import SVGIcons from './SVGIcons';
 import {useState} from 'react';
+import Link from 'next/link';
 
 const Navbar = () => {
     const [activeIcon, setActiveIcon] = useState<string>('nav-home');
 
     const icons = [
         {name: 'nav-home', label: 'Home'},
-        {name: 'nav-movies', label: 'Movies'},
-        {name: 'nav-tv-series', label: 'TV Series'},
-        {name: 'nav-bookmark', label: 'Bookmarks'},
+        {name: 'movies', label: 'Movies'},
+        {name: 'tv-series', label: 'TV Series'},
+        {name: 'bookmarks', label: 'Bookmarks'},
     ];
 
     const getFillColor = (iconName: string) => {
@@ -33,17 +34,22 @@ const Navbar = () => {
 
                 <div className="flex flex-col gap-y-(--space-500)">
                     {icons.map((icon) => (
-                        <button
-                            type="button"
+                        <Link
                             key={icon.name}
-                            onClick={() => setActiveIcon(icon.name)}
-                            className="hover:opacity-75 transition-opacity cursor-pointer"
-                            aria-label={icon.label}>
-                            <SVGIcons
-                                name={icon.name}
-                                fill={getFillColor(icon.name)}
-                            />
-                        </button>
+                            href={`/${
+                                icon.name === 'nav-home' ? '/' : `${icon.name}`
+                            }`}>
+                            <button
+                                type="button"
+                                onClick={() => setActiveIcon(icon.name)}
+                                className="hover:opacity-75 transition-opacity cursor-pointer"
+                                aria-label={icon.label}>
+                                <SVGIcons
+                                    name={icon.name}
+                                    fill={getFillColor(icon.name)}
+                                />
+                            </button>
+                        </Link>
                     ))}
                 </div>
             </div>
