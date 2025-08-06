@@ -57,3 +57,7 @@ body {
     color: var(--foreground);
     font-family: var(--ff-outfit);
 }
+
+.bookmark-svg:hover button svg path {
+    stroke: var(--clr-black);
+}
