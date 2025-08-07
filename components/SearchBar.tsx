@@ -1,6 +1,10 @@
 import Image from 'next/image';
 
-const SearchBar = () => {
+interface SearchBarProps {
+    placeholderText: string;
+}
+
+const SearchBar = ({placeholderText}: SearchBarProps) => {
     return (
         <form>
             <label className="relative inline-flex " htmlFor="search">
@@ -17,7 +21,7 @@ const SearchBar = () => {
                     className="block placeholder:text-(--clr-white)/50 text-(length:--fs-24) ml-(--space-300)  w-full text-(--clr-white)  pb-(--space-200) focus:outline-none focus:border-b-2 focus:border-b-(--clr-blue-500) caret-(--clr-red-500)
                 "
                     type="text"
-                    placeholder="Search for movies or TV series"
+                    placeholder={placeholderText}
                     name="search"
                 />
             </label>
