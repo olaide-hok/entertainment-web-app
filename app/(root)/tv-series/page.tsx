@@ -9,7 +9,7 @@ const TVSeries = () => {
 
     return (
         <div className="flex flex-col gap-y-(--space-500)">
-            <SearchBar />
+            <SearchBar placeholderText="Search for TV series" />
             <div className="flex flex-col gap-y-(--space-400)">
                 <h2 className="text-(length:--fs-32) text-(--clr-white) font-light leading-(--lh-125) trailing-(--ls-5)">
                     TV Series
