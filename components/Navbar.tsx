@@ -2,22 +2,22 @@
 
 import Image from 'next/image';
 import SVGIcons from './SVGIcons';
-import {useState} from 'react';
 import Link from 'next/link';
+import {usePathname} from 'next/navigation';
 
 const Navbar = () => {
-    const [activeIcon, setActiveIcon] = useState<string>('nav-home');
+    const pathname = usePathname();
 
     const icons = [
-        {name: 'nav-home', label: 'Home'},
-        {name: 'movies', label: 'Movies'},
-        {name: 'tv-series', label: 'TV Series'},
-        {name: 'bookmarks', label: 'Bookmarks'},
+        {name: 'nav-home', label: 'Home', href: '/'},
+        {name: 'movies', label: 'Movies', href: '/movies'},
+        {name: 'tv-series', label: 'TV Series', href: '/tv-series'},
+        {name: 'bookmarks', label: 'Bookmarks', href: '/bookmarks'},
     ];
 
-    const getFillColor = (iconName: string) => {
-        if (iconName === 'nav-home') return '#FFFFFF';
-        return iconName === activeIcon ? '#FC4747' : '#5A698F'; // Red if active, gray otherwise
+    const getFillColor = (iconHref: string) => {
+        if (iconHref === pathname) return '#FFFFFF';
+        return '#5A698F'; // Gray otherwise
     };
 
     return (
@@ -36,19 +36,12 @@ const Navbar = () => {
                     {icons.map((icon) => (
                         <Link
                             key={icon.name}
-                            href={`/${
-                                icon.name === 'nav-home' ? '/' : `${icon.name}`
-                            }`}>
-                            <button
-                                type="button"
-                                onClick={() => setActiveIcon(icon.name)}
-                                className="hover:opacity-75 transition-opacity cursor-pointer"
-                                aria-label={icon.label}>
-                                <SVGIcons
-                                    name={icon.name}
-                                    fill={getFillColor(icon.name)}
-                                />
-                            </button>
+                            href={icon.href}
+                            className="navlink transition-opacity cursor-pointer">
+                            <SVGIcons
+                                name={icon.name}
+                                fill={getFillColor(icon.href)}
+                            />
                         </Link>
                     ))}
                 </div>
