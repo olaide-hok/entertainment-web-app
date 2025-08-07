@@ -61,3 +61,7 @@ body {
 .bookmark-svg:hover button svg path {
     stroke: var(--clr-black);
 }
+
+.navlink:hover svg path {
+    fill: var(--clr-red-500);
+}
