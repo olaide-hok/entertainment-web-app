@@ -21,18 +21,21 @@ const Navbar = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-between bg-(--clr-blue-900) rounded-[1.25rem] w-[6rem] px-[1.75rem] py-(--space-200) md:h-[60rem]">
+        <div className="flex flex-row xl:flex-col items-center xl:justify-between gap-x-(--space-1000) bg-(--clr-blue-900) md:rounded-[0.625rem] xl:rounded-[1.25rem] w-full xl:w-[6rem] p-(--space-200) lg:px-[1.75rem] lg:py-(--space-200) xl:h-[60rem]">
             {/* Logo and NavIcons */}
-            <div className="flex flex-col items-center gap-y-(--space-900)">
-                <Image
-                    className="mx-auto mt-4"
-                    src="/assets/logo.svg"
-                    alt="logo"
-                    width={32}
-                    height={32}
-                />
+            <div className="flex flex-row justify-between w-full xl:flex-col items-center gap-y-(--space-900)">
+                <div className="relative w-[1.5625rem] h-[1.25rem] lg:w-[2rem] lg:h-[2rem]">
+                    <Image
+                        unoptimized
+                        className="h-full w-full xl:mt-4"
+                        src="/assets/logo.svg"
+                        alt="logo"
+                        sizes="100vw"
+                        fill
+                    />
+                </div>
 
-                <div className="flex flex-col gap-y-(--space-500)">
+                <div className="flex flex-row items-center gap-x-(--space-300) md:gap-x-(--space-400) xl:flex-col gap-y-(--space-500)">
                     {icons.map((icon) => (
                         <Link
                             key={icon.name}
@@ -45,11 +48,20 @@ const Navbar = () => {
                         </Link>
                     ))}
                 </div>
+
+                {/* Avatar */}
+                <Image
+                    className="rounded-full xl:hidden"
+                    src="/assets/image-avatar.png"
+                    alt="avatar"
+                    width={32}
+                    height={32}
+                />
             </div>
 
             {/* Avatar */}
             <Image
-                className="rounded-full mx-auto mt-4"
+                className="rounded-full hidden xl:block lg:mt-4"
                 src="/assets/image-avatar.png"
                 alt="avatar"
                 width={32}

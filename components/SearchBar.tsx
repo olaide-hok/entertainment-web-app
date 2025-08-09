@@ -6,7 +6,7 @@ interface SearchBarProps {
 
 const SearchBar = ({placeholderText}: SearchBarProps) => {
     return (
-        <form>
+        <form className="xl:mt-(--space-400)">
             <label className="relative inline-flex " htmlFor="search">
                 <Image
                     className="pb-(--space-200)"

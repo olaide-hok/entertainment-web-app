@@ -23,14 +23,14 @@ const FilmTile = ({
     return (
         <div className="flex flex-col gap-y-(--space-100)">
             {/* Image */}
-            <div className="relative w-[17.5rem] h-[10.875rem]">
+            <div className="relative w-full h-[6.875rem] xl:w-[17.5rem] md:h-[8.75rem] xl:h-[10.875rem]">
                 <Image
                     className="rounded-(--space-100) object-cover"
                     src={thumbnail.regular.large}
                     alt={title}
                     fill
                 />
-                <div className="bookmark-svg absolute right-(--space-200) top-(--space-200) flex items-center justify-center bg-(--clr-blue-950)/50 cursor-pointer hover:bg-(--clr-white) rounded-full w-(--space-400) h-(--space-400)">
+                <div className="bookmark-svg absolute right-(--space-100) top-(--space-100) md:right-(--space-200) md:top-(--space-200) flex items-center justify-center bg-(--clr-blue-950)/50 cursor-pointer hover:bg-(--clr-white) rounded-full w-(--space-400) h-(--space-400)">
                     <button
                         type="button"
                         className="cursor-pointer"
