@@ -26,12 +26,12 @@ const HomePage = () => {
                 </h1>
 
                 <div>
-                    <Carousel className="w-full">
-                        <CarouselContent className="-ml-(--space-500)">
+                    <Carousel className="w-full h-full">
+                        <CarouselContent className="-ml-(--space-200) xl:-ml-(--space-500)">
                             {trendingFilms.map((trendingFilm, index) => (
                                 <CarouselItem
                                     key={index}
-                                    className="pl-(--space-500) md:basis-1/2 lg:basis-1/3">
+                                    className="pl-(--space-200) lg:pl-(--space-500) basis-[75%] lg:basis-auto">
                                     <TrendingFilmTile
                                         title={trendingFilm.title}
                                         year={trendingFilm.year}
