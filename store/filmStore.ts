@@ -32,6 +32,7 @@ interface FilmStoreState {
     getFilteredFilms: () => Film[];
     bookmarked: Film[];
     recommendedForYou: Film[];
+    toggleBookmark: (title: string) => void;
 }
 
 export const useFilmStore = create<FilmStoreState>((set, get) => ({
@@ -50,10 +51,24 @@ export const useFilmStore = create<FilmStoreState>((set, get) => ({
         );
     },
     bookmarked: data.filter((film) => film.isBookmarked),
-    addToBookmarks(film: Film) {
-        set((state) => ({
-            bookmarked: [...state.bookmarked, film],
-        }));
+    // add or remove to bookmarks
+    toggleBookmark(title: string) {
+        const {films} = get();
+        const film = films.find((film) => film.title === title);
+        if (film) {
+            if (film.isBookmarked) {
+                set((state) => ({
+                    bookmarked: state.bookmarked.filter(
+                        (bookmark) => bookmark.title !== title
+                    ),
+                }));
+            } else {
+                set((state) => ({
+                    bookmarked: [...state.bookmarked, film],
+                }));
+            }
+            film.isBookmarked = !film.isBookmarked;
+        }
     },
     recommendedForYou: data.filter((film) => !film.isTrending),
 }));
