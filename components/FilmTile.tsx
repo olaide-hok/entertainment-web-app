@@ -4,7 +4,7 @@ import Image from 'next/image';
 import SVGIcons from './SVGIcons';
 import {useState} from 'react';
 
-import {Film as FilmTileProps} from '@/store/filmStore';
+import {Film as FilmTileProps, useFilmStore} from '@/store/filmStore';
 
 const FilmTile = ({
     title,
@@ -15,9 +15,11 @@ const FilmTile = ({
     isBookmarked,
 }: FilmTileProps) => {
     const [activeIcon, setActiveIcon] = useState<boolean>(isBookmarked);
+    const {toggleBookmark} = useFilmStore();
 
-    const handleBookmark = () => {
+    const handleBookmark = (title: string) => {
         setActiveIcon(!activeIcon);
+        toggleBookmark(title);
     };
 
     return (
@@ -35,7 +37,7 @@ const FilmTile = ({
                         type="button"
                         className="cursor-pointer"
                         aria-label="bookmark"
-                        onClick={handleBookmark}>
+                        onClick={() => handleBookmark(title)}>
                         <SVGIcons
                             name={
                                 activeIcon ? `bookmark-full` : `bookmark-empty`
