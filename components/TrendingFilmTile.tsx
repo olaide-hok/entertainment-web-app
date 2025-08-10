@@ -23,7 +23,7 @@ const TrendingFilmTile = ({
 
     if (isTrending && thumbnail.trending) {
         return (
-            <div className="flex flex-col gap-y-(--space-100)">
+            <div className="trending flex flex-col gap-y-(--space-100) hover:cursor-pointer ">
                 {/* Image */}
                 <div className="relative w-full h-[8.75rem] md:w-[29.375rem] md:h-[14.375rem]">
                     <Image
@@ -32,7 +32,7 @@ const TrendingFilmTile = ({
                         alt={title}
                         fill
                     />
-                    <div className="absolute flex flex-col justify-between h-full w-full px-(--space-300) py-(--space-200)">
+                    <div className="overlay-wrapper absolute flex flex-col justify-between h-full w-full px-(--space-300) py-(--space-200)">
                         <div className="bookmark-svg flex items-center self-end justify-center bg-(--clr-blue-950)/50 cursor-pointer hover:bg-(--clr-white) rounded-full w-(--space-400) h-(--space-400)">
                             <button
                                 type="button"
@@ -48,6 +48,14 @@ const TrendingFilmTile = ({
                                     fill=""
                                 />
                             </button>
+                        </div>
+
+                        <div className="thumbnail hidden bg-(--clr-white)/25 absolute rounded-[1.7813rem] w-[7.3125rem] h-[3rem] items-center self-center gap-x-(--space-200) p-[0.5625rem] transform translate-y-[150%] translate-x-0">
+                            <SVGIcons name="icon-play" fill="#ffffff" />
+
+                            <span className="text-(length:--fs-18) text-(--clr-white) leading-(--lh-125) font-medium">
+                                Play
+                            </span>
                         </div>
 
                         {/* Details */}

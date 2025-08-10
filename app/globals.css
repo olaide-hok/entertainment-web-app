@@ -65,3 +65,21 @@ body {
 .navlink:hover svg path {
     fill: var(--clr-red-500);
 }
+
+.overlay-tile:hover,
+.trending:hover .overlay-wrapper {
+    border-radius: 0.5rem;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+}
+
+.overlay-tile:hover .thumbnail {
+    display: flex;
+}
+
+.trending:hover .overlay-wrapper .thumbnail {
+    display: flex;
+}
