@@ -30,7 +30,7 @@ interface FilmStoreState {
     movies: Film[];
     tvSeries: Film[];
     setSearch: (text: string) => void;
-    getSearchedFilms: () => Film[];
+    getSearchedFilms: (page: string) => Film[];
     bookmarked: Film[];
     recommendedForYou: Film[];
     toggleBookmark: (title: string) => void;
@@ -47,14 +47,36 @@ export const useFilmStore = create<FilmStoreState>((set, get) => ({
         set({search: text});
     },
 
-    getSearchedFilms() {
+    getSearchedFilms(page) {
         const {search, films} = get();
 
         if (!search.trim()) return []; // Return nothing if search is empty
 
-        return films.filter((film) =>
-            film.title.toLowerCase().includes(search.toLowerCase())
-        );
+        if (page === 'all') {
+            return films.filter((film) =>
+                film.title.toLowerCase().includes(search.toLowerCase())
+            );
+        } else if (page === 'Movie') {
+            return films
+                .filter((film) => film.category === 'Movie')
+                .filter((film) =>
+                    film.title.toLowerCase().includes(search.toLowerCase())
+                );
+        } else if (page === 'TV Series') {
+            return films
+                .filter((film) => film.category === 'TV Series')
+                .filter((film) =>
+                    film.title.toLowerCase().includes(search.toLowerCase())
+                );
+        } else if (page === 'Bookmarked') {
+            return films
+                .filter((film) => film.isBookmarked)
+                .filter((film) =>
+                    film.title.toLowerCase().includes(search.toLowerCase())
+                );
+        }
+
+        return [];
     },
     bookmarked: data.filter((film) => film.isBookmarked),
     // add or remove to bookmarks
