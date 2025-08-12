@@ -23,13 +23,14 @@ export interface Film {
 
 interface FilmStoreState {
     films: Film[];
-    filters: {
-        search: string;
-    };
+
+    search: string;
+
     trendingFilms: Film[];
     movies: Film[];
     tvSeries: Film[];
-    getFilteredFilms: () => Film[];
+    setSearch: (text: string) => void;
+    getSearchedFilms: () => Film[];
     bookmarked: Film[];
     recommendedForYou: Film[];
     toggleBookmark: (title: string) => void;
@@ -37,17 +38,22 @@ interface FilmStoreState {
 
 export const useFilmStore = create<FilmStoreState>((set, get) => ({
     films: data,
-    filters: {
-        search: '',
-    },
+    search: '',
     trendingFilms: data.filter((film) => film.isTrending),
     movies: data.filter((film) => film.category === 'Movie'),
     tvSeries: data.filter((film) => film.category === 'TV Series'),
 
-    getFilteredFilms() {
-        const {filters} = get();
-        return data.filter((film) =>
-            film.title.toLowerCase().includes(filters.search.toLowerCase())
+    setSearch: (text) => {
+        set({search: text});
+    },
+
+    getSearchedFilms() {
+        const {search, films} = get();
+
+        if (!search.trim()) return []; // Return nothing if search is empty
+
+        return films.filter((film) =>
+            film.title.toLowerCase().includes(search.toLowerCase())
         );
     },
     bookmarked: data.filter((film) => film.isBookmarked),
