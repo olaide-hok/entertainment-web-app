@@ -31,6 +31,7 @@ const TrendingFilmTile = ({
                         src={thumbnail?.trending?.large}
                         alt={title}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="overlay-wrapper absolute flex flex-col justify-between h-full w-full px-(--space-300) py-(--space-200)">
                         <div className="bookmark-svg flex items-center self-end justify-center bg-(--clr-blue-950)/50 cursor-pointer hover:bg-(--clr-white) rounded-full w-(--space-400) h-(--space-400)">
