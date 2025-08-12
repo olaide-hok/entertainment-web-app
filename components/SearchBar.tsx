@@ -2,6 +2,8 @@
 
 import {useFilmStore} from '@/store/filmStore';
 import Image from 'next/image';
+import {usePathname} from 'next/navigation';
+import {useEffect} from 'react';
 
 interface SearchBarProps {
     placeholderText: string;
@@ -9,9 +11,16 @@ interface SearchBarProps {
 
 const SearchBar = ({placeholderText}: SearchBarProps) => {
     const {search, setSearch} = useFilmStore();
+    const pathname = usePathname();
+
     const handleSearchChange = (value: string) => {
         setSearch(value);
     };
+
+    // Reset search when route changes
+    useEffect(() => {
+        setSearch('');
+    }, [pathname, setSearch]);
 
     return (
         <div className="xl:mt-(--space-400)">
