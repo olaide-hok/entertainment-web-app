@@ -85,6 +85,8 @@ const TrendingFilmTile = ({
             </div>
         );
     }
+
+    return null;
 };
 
 export default TrendingFilmTile;
