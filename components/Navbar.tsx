@@ -4,6 +4,8 @@ import Image from 'next/image';
 import SVGIcons from './SVGIcons';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
+import {logOutUser} from '../lib/actions';
+import Button from './Button';
 
 const Navbar = () => {
     const pathname = usePathname();
@@ -27,10 +29,10 @@ const Navbar = () => {
                 <div className="relative w-[1.5625rem] h-[1.25rem] lg:w-[2rem] lg:h-[2rem]">
                     <Image
                         unoptimized
-                        className="h-full w-full xl:mt-4"
+                        className="h-auto w-auto xl:mt-4"
                         src="/assets/logo.svg"
                         alt="logo"
-                        sizes="100vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         fill
                     />
                 </div>
@@ -49,24 +51,42 @@ const Navbar = () => {
                     ))}
                 </div>
 
+                <div className="flex gap-x-4 items-center">
+                    <Button
+                        variant="secondary"
+                        className="cursor-pointer p-2 mb-2 xl:hidden"
+                        onClick={logOutUser}
+                        name="Logout"
+                    />
+
+                    {/* Avatar */}
+                    <Image
+                        className="rounded-full xl:hidden"
+                        src="/assets/image-avatar.png"
+                        alt="avatar"
+                        width={32}
+                        height={32}
+                    />
+                </div>
+            </div>
+
+            <div className="flex flex-col items-center">
+                <Button
+                    variant="secondary"
+                    className="cursor-pointer p-2 mb-2 hidden xl:block"
+                    onClick={logOutUser}
+                    name="Logout"
+                />
+
                 {/* Avatar */}
                 <Image
-                    className="rounded-full xl:hidden"
+                    className="rounded-full hidden xl:block lg:mt-4"
                     src="/assets/image-avatar.png"
                     alt="avatar"
                     width={32}
                     height={32}
                 />
             </div>
-
-            {/* Avatar */}
-            <Image
-                className="rounded-full hidden xl:block lg:mt-4"
-                src="/assets/image-avatar.png"
-                alt="avatar"
-                width={32}
-                height={32}
-            />
         </div>
     );
 };
