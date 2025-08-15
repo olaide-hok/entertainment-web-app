@@ -1,6 +1,6 @@
 import {Metadata} from 'next';
-import {redirect} from 'next/navigation';
-import {auth} from '@/auth';
+// import {redirect} from 'next/navigation';
+// import {auth} from '@/auth';
 import CredentialsLogInForm from './credentials-login-form';
 
 export const metadata: Metadata = {
@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 };
 
 const LogInPage = async () => {
-    const session = await auth();
+    // const session = await auth();
 
-    if (session) {
-        return redirect('/');
-    }
+    // if (session) {
+    //     return redirect('/');
+    // }
 
     return (
         <div className="container flex justify-center">
