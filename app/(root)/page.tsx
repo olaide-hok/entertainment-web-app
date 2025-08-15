@@ -32,7 +32,7 @@ const HomePage = () => {
                     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-(--space-200) md:gap-x-(--space-400) md:gap-y-(--space-300) gap-x-(--space-200) xl:gap-x-(--space-500)">
                         {searchedFilmResult.map((film) => (
                             <FilmTile
-                                key={film.title}
+                                key={`${film.title}-${film.year}`}
                                 title={film.title}
                                 year={film.year}
                                 category={film.category}
@@ -67,7 +67,11 @@ const HomePage = () => {
                                         {trendingFilms.map(
                                             (trendingFilm, index) => (
                                                 <CarouselItem
-                                                    key={index}
+                                                    key={
+                                                        trendingFilm.title +
+                                                        trendingFilm.year +
+                                                        index
+                                                    }
                                                     className="pl-(--space-200) lg:pl-(--space-500) basis-[75%] lg:basis-auto">
                                                     <TrendingFilmTile
                                                         title={
