@@ -44,8 +44,8 @@ Users should be able to:
 
 ### Links
 
--   Solution URL: [Link](https://your-solution-url.com)
--   Live Site URL: [Link](https://your-live-site-url.com)
+-   Solution URL: [Link](https://github.com/olaide-hok/entertainment-web-app)
+-   Live Site URL: [Link](https://entertainment-web-app-pied.vercel.app)
 
 ## Getting Started
 
