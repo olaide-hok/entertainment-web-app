@@ -5,9 +5,18 @@ import {auth} from './auth';
 export async function middleware(request: NextRequest) {
     const session = await auth();
 
-    const protectedPaths = ['/'];
-    const isProtected = protectedPaths.some((path) =>
-        request.nextUrl.pathname.startsWith(path)
+    const protectedPaths = ['/', '/movies', '/tv-series', '/bookmarks'];
+    const publicPaths = ['/login', '/signup'];
+
+    const pathname = request.nextUrl.pathname;
+
+    // Skip public routes
+    if (publicPaths.includes(pathname)) {
+        return NextResponse.next();
+    }
+
+    const isProtected = protectedPaths.some(
+        (path) => pathname === path || pathname.startsWith(path + '/')
     );
 
     if (isProtected && !session?.user) {
