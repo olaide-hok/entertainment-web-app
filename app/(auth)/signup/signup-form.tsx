@@ -177,7 +177,7 @@ const SignUpForm = () => {
                                 className={`block placeholder:text-(--clr-white)/50 text-(length:--fs-15) pl-(--space-200) w-full text-(--clr-white) pb-(--space-200) focus:outline-none border-b-2 ${isErrorRepeatPassword} focus:border-b-(--clr-white) caret-(--clr-red-500)`}
                                 type="password"
                                 placeholder="Repeat Password"
-                                name="repeat password"
+                                name="repeatPassword"
                                 value={signupForm.repeatPassword}
                                 onChange={(e) =>
                                     setSignupForm((prev) => ({
