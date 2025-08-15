@@ -68,12 +68,21 @@ export async function signUpUser(prevState: unknown, formData: FormData) {
             };
         }
 
-        if (!res.ok && res.status === 404) {
+        // Handle 404 errors explicitly
+        if (res.status === 404) {
             return {
-                success: data.success,
-                message: data.error,
+                success: false,
+                message: data.error || 'Resource not found.',
             };
         }
+
+        // Handle all other errors with a generic fallback
+        return {
+            success: false,
+            message:
+                data.error ||
+                'An unexpected error occurred. Please try again later.',
+        };
     } catch (error) {
         if (isRedirectError(error)) {
             throw error;
