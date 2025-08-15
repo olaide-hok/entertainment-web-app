@@ -82,21 +82,25 @@ export const useFilmStore = create<FilmStoreState>((set, get) => ({
     // add or remove to bookmarks
     toggleBookmark(title: string) {
         const {films} = get();
-        const film = films.find((film) => film.title === title);
-        if (film) {
-            if (film.isBookmarked) {
-                set((state) => ({
-                    bookmarked: state.bookmarked.filter(
-                        (bookmark) => bookmark.title !== title
-                    ),
-                }));
-            } else {
-                set((state) => ({
-                    bookmarked: [...state.bookmarked, film],
-                }));
+
+        // Create a new films array with updated isBookmarked for the matching film
+        const updatedFilms = films.map((film) => {
+            if (film.title === title) {
+                return {...film, isBookmarked: !film.isBookmarked}; // create new object with toggled property
             }
-            film.isBookmarked = !film.isBookmarked;
-        }
+            return film; // unchanged film objects remain the same
+        });
+
+        // Update bookmarked list based on new isBookmarked state
+        const updatedBookmarked = updatedFilms.filter(
+            (film) => film.isBookmarked
+        );
+
+        // Set new state immutably
+        set(() => ({
+            films: updatedFilms,
+            bookmarked: updatedBookmarked,
+        }));
     },
     recommendedForYou: data.filter((film) => !film.isTrending),
 }));
