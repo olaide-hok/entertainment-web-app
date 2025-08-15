@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import {Outfit} from 'next/font/google';
 import './globals.css';
+import {AuthProviders} from '@/components/providers';
 
 const outfitSans = Outfit({
     variable: '--ff-outfit',
@@ -21,7 +22,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${outfitSans.variable} antialiased`}>
-                {children}
+                <AuthProviders>{children}</AuthProviders>
             </body>
         </html>
     );
