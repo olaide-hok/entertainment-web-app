@@ -23,7 +23,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="flex flex-row xl:flex-col items-center xl:justify-between gap-x-(--space-1000) bg-(--clr-blue-900) md:rounded-[0.625rem] xl:rounded-[1.25rem] w-full xl:w-[6rem] p-(--space-200) lg:px-[1.75rem] lg:py-(--space-200) xl:h-[60rem]">
+        <div className="flex flex-row xl:flex-col items-center xl:justify-between gap-x-[0] bg-(--clr-blue-900) md:rounded-[0.625rem] xl:rounded-[1.25rem] w-full xl:w-[6rem] p-(--space-200) lg:px-[1.75rem] lg:py-(--space-200) xl:h-[60rem]">
             {/* Logo and NavIcons */}
             <div className="flex flex-row justify-between w-full xl:flex-col items-center gap-y-(--space-900)">
                 <div className="relative w-[1.5625rem] h-[1.25rem] lg:w-[2rem] lg:h-[2rem]">
